@@ -50,7 +50,6 @@ li {
 ---------------------------------*/
 .title {
   font-size: 34px;
-  font-weight: normal;
   font-weight: bold;
   line-height: 1;
   margin-bottom: 40px;
@@ -118,8 +117,9 @@ li {
 .split {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
   justify-content: space-between;
+  flex-wrap: nowrap;
+  /* ★PCで縦落ち防止（2枚目みたいに固定で横並び） */
 }
 
 .split-body {
@@ -139,14 +139,12 @@ li {
 
 .split-title {
   font-size: 42px;
-  font-weight: 900;
   line-height: 1.2;
   margin-bottom: 20px;
   letter-spacing: .05em;
   font-family: "Lavishly Yours", cursive;
   font-weight: 400;
   font-style: normal;
-
 }
 
 /*--------------------------------
@@ -306,6 +304,60 @@ li {
 /*media Queries 767
 ----------------------------------------------------*/
 @media screen and (max-width: 767px) {
+
+  /* PC/SP切り替え */
+  .pc-only {
+    display: none;
+  }
+
+  .sp-only {
+    display: block;
+  }
+
+  /* 見出し */
+  .title {
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+
+  /* レイアウト */
+  .section {
+    padding: 60px 0;
+  }
+
+  .inner {
+    padding: 0 20px;
+  }
+
+  /* ヘッダー */
+  .header-inner {
+    padding: 20px;
+  }
+
+  .header-logo {
+    font-size: 16px;
+  }
+
+  .header-nav-item:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  .header-nav-item a {
+    font-size: 11px;
+  }
+
+  /* スプリットスクリーン（SP） */
+  .split {
+    flex-direction: column-reverse;
+    flex-wrap: nowrap;
+  }
+
+  .split-body {
+    width: 100%;
+    padding-right: 3%;
+    padding-left: 8%;
+  }
+
   .split-img {
     width: 100%;
     height: 67vh;
@@ -315,102 +367,43 @@ li {
     background-position: center;
     background-size: cover;
   }
-}
 
-.pc-only {
-  display: none;
-}
+  .split-title {
+    font-size: 32px;
+  }
 
-.sp-only {
-  display: block;
-}
+  /* Works */
+  .works-name {
+    font-size: 10px;
+  }
 
-/* 見出し */
-.title {
-  font-size: 26px;
-  margin-bottom: 20px;
-}
+  .works-list {
+    justify-content: space-between;
+  }
 
-/* レイアウト */
-.section {
-  padding: 60px 0;
-}
+  .works-item {
+    flex: 0 0 48%;
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
 
-.inner {
-  padding: 0 20px;
-}
+  /* Skill */
+  .skill-list {
+    display: block;
+    margin-bottom: 0;
+  }
 
-/* ヘッダー */
-.header-inner {
-  padding: 20px;
-}
+  .skill-item {
+    width: 100%;
+    margin-bottom: 35px;
+  }
 
-.header-logo {
-  font-size: 16px;
-}
+  .skill-item:last-child {
+    margin-bottom: 0;
+  }
 
-.header-nav-item:not(:last-child) {
-  margin-right: 10px;
-}
-
-.header-nav-item a {
-  font-size: 11px;
-}
-
-/* スプリットスクリーン */
-.split {
-  flex-direction: column-reverse;
-}
-
-.split-body {
-  width: 100%;
-  padding-right: 3%;
-  padding-left: 8%;
-}
-
-.split-img {
-  width: 100%;
-  height: 67vh;
-  margin-bottom: 20px;
-  background-image: url(../img/umi_shirahama_03.jpg);
-}
-
-.split-title {
-  font-size: 32px;
-}
-
-/* Works */
-.works-name {
-  font-size: 10px;
-}
-
-.works-list {
-  justify-content: space-between;
-}
-
-.works-item {
-  flex: 0 0 48%;
-  margin-right: 0;
-  margin-bottom: 30px;
-}
-
-/* Skill */
-.skill-list {
-  display: block;
-  margin-bottom: 0;
-}
-
-.skill-item {
-  width: 100%;
-  margin-bottom: 35px;
-}
-
-.skill-item:last-child {
-  margin-bottom: 0;
-}
-
-/* フッター */
-.footer {
-  padding: 20px;
-}
+  /* フッター */
+  .footer {
+    padding: 20px;
+  }
 }
